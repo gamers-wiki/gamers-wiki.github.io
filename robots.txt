@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /ff9/search/
 
-Sitemap: https://gamers-wiki.github.io/sitemap.xml
+Sitemap: https://gamers-wiki.github.io/sitemap_index.xml
