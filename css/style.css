@@ -1,0 +1,582 @@
+/* =========================================================
+   ゲーマーズWiki  共通スタイル
+   テーマ：夜のセーブポイント（深い藍・ドット状の光・タイトルごとの色）
+   各Wikiのカードだけが色を持ち、地の面は色を持たない。
+   ========================================================= */
+
+/* ---------- カラーパレット ---------- */
+:root {
+  --ink-deep:  #0f1428;   /* いちばん深い藍：ヘッダー・フッター */
+  --ink:       #1b2340;   /* ナビ・見出し */
+  --main:      #3f6fd8;   /* リンク・主要ボタン */
+  --light:     #6d9bf0;   /* ホバー */
+  --amber:     #f0b429;   /* 差し色：ロゴ・見出しの罫 */
+  --amber-dim: #b98510;
+  --foam:      #dde3ee;   /* 罫線 */
+  --mist:      #eef1f7;   /* ページ背景 */
+  --paper:     #ffffff;   /* コンテンツ背景 */
+  --text:      #1f2533;
+  --text-sub:  #5d6577;
+  --white:     #ffffff;
+  --ok:        #2e9e78;
+
+  --radius: 8px;
+  --shadow: 0 2px 10px rgba(15, 20, 40, 0.10);
+  --font-body: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", "Meiryo", "Noto Sans JP", sans-serif;
+  --font-title: "Yu Gothic", "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif;
+}
+
+/* ---------- リセット ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text);
+  background: var(--mist);
+}
+a { color: var(--main); text-decoration: none; }
+a:hover { color: var(--light); text-decoration: underline; }
+img { max-width: 100%; height: auto; }
+ul, ol { padding-left: 1.4em; }
+table { border-collapse: collapse; }
+
+/* =========================================================
+   ヘッダー
+   ========================================================= */
+.site-header {
+  background: linear-gradient(180deg, var(--ink-deep) 0%, var(--ink) 100%);
+  color: var(--white);
+  border-bottom: 2px solid var(--amber);
+}
+.header-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--white);
+  text-decoration: none;
+}
+.site-logo:hover { text-decoration: none; color: var(--amber); }
+.logo-mark { display: flex; color: var(--amber); }
+.logo-text { display: flex; flex-direction: column; line-height: 1.2; }
+.logo-title {
+  font-family: var(--font-title);
+  font-size: 21px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+}
+.logo-sub {
+  font-size: 11px;
+  letter-spacing: 0.32em;
+  color: var(--amber);
+}
+.nav-toggle {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  color: var(--white);
+  font-size: 20px;
+  padding: 4px 10px;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+/* =========================================================
+   グローバルナビ
+   ========================================================= */
+.global-nav {
+  background: var(--ink);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+.global-nav ul {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 0 12px;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+}
+.global-nav a {
+  display: block;
+  padding: 11px 16px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 13.5px;
+  border-bottom: 3px solid transparent;
+  transition: background 0.2s, border-color 0.2s;
+}
+.global-nav a:hover,
+.global-nav a.current {
+  background: rgba(255, 255, 255, 0.06);
+  border-bottom-color: var(--amber);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* =========================================================
+   ヒーロー（トップページ）
+   ドットの光を敷いた夜。ゲーム画面は使わない
+   ========================================================= */
+.hero {
+  position: relative;
+  color: var(--white);
+  text-align: center;
+  padding: 66px 20px 74px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 60% 45% at 50% 0%, rgba(109, 155, 240, 0.30), transparent 70%),
+    linear-gradient(180deg, #1b2340 0%, #131a33 55%, #0f1428 100%);
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+.hero-inner { position: relative; z-index: 1; max-width: 760px; margin: 0 auto; }
+.hero-catch {
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  color: var(--amber);
+  margin: 0 0 10px;
+}
+.hero h1 {
+  font-family: var(--font-title);
+  font-size: 34px;
+  margin: 0 0 16px;
+  letter-spacing: 0.04em;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.5);
+}
+.hero-lead {
+  font-size: 15px;
+  margin: 0 0 26px;
+  opacity: 0.92;
+}
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hero-stats li { font-size: 12.5px; color: rgba(255, 255, 255, 0.7); }
+.hero-stats strong {
+  display: block;
+  font-family: var(--font-title);
+  font-size: 30px;
+  line-height: 1.2;
+  color: var(--amber);
+}
+
+/* =========================================================
+   ボタン
+   ========================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 9px 22px;
+  border-radius: 999px;
+  font-weight: bold;
+  font-size: 13.5px;
+  transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+.btn:hover { text-decoration: none; transform: translateY(-2px); }
+.btn-primary {
+  background: var(--accent, var(--main));
+  color: var(--white);
+  box-shadow: 0 4px 12px rgba(15, 20, 40, 0.18);
+}
+.btn-primary:hover { color: var(--white); }
+.btn-ghost {
+  border: 1px solid var(--foam);
+  background: var(--white);
+  color: var(--text);
+}
+.btn-ghost:hover { background: var(--mist); color: var(--text); }
+.btn-disabled {
+  border: 1px dashed var(--foam);
+  background: var(--mist);
+  color: var(--text-sub);
+  font-weight: normal;
+  cursor: default;
+}
+.btn-disabled:hover { transform: none; }
+
+/* =========================================================
+   レイアウト（1カラム）
+   ========================================================= */
+.layout {
+  max-width: 1080px;
+  margin: 26px auto 44px;
+  padding: 0 20px;
+}
+.content {
+  background: var(--paper);
+  border: 1px solid var(--foam);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px 32px 36px;
+}
+.content-plain { background: none; border: none; box-shadow: none; padding: 0; }
+.wiki-section { margin-bottom: 40px; }
+.wiki-section:last-child { margin-bottom: 0; }
+
+/* 見出し */
+.section-title,
+.content h2 {
+  font-family: var(--font-title);
+  font-size: 20px;
+  margin: 8px 0 18px;
+  padding: 2px 0 8px 14px;
+  color: var(--ink);
+  border-left: 5px solid var(--amber);
+  border-bottom: 1px solid var(--foam);
+}
+.content h3 {
+  font-size: 16.5px;
+  margin: 28px 0 12px;
+  padding: 4px 12px;
+  color: var(--ink);
+  background: var(--mist);
+  border-left: 4px solid var(--main);
+  border-radius: 0 3px 3px 0;
+}
+.content h4 {
+  font-size: 15px;
+  margin: 20px 0 8px;
+  padding-bottom: 3px;
+  color: var(--ink);
+  border-bottom: 2px dotted var(--foam);
+}
+.content p { margin: 0 0 15px; }
+.section-lead { color: var(--text-sub); margin: -6px 0 20px; font-size: 14px; }
+
+/* パンくず */
+.breadcrumb {
+  max-width: 1080px;
+  margin: 14px auto 0;
+  padding: 0 20px;
+  font-size: 12.5px;
+  color: var(--text-sub);
+}
+.breadcrumb ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px; }
+.breadcrumb li + li::before { content: "›"; margin: 0 6px; color: var(--main); }
+
+/* 記事ヘッダー */
+.article-header {
+  border-bottom: 2px solid var(--amber);
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+.article-header h1 {
+  font-family: var(--font-title);
+  font-size: 27px;
+  margin: 0 0 4px;
+  color: var(--ink-deep);
+  line-height: 1.4;
+}
+.article-meta { font-size: 12px; color: var(--text-sub); }
+.article-meta span + span::before { content: "｜"; margin: 0 6px; }
+.article-lead {
+  font-size: 15px;
+  padding: 14px 18px;
+  margin: 0 0 22px;
+  border-left: 4px solid var(--amber);
+  background: var(--mist);
+}
+.name-en {
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--amber-dim);
+  margin-left: 10px;
+  font-weight: normal;
+}
+
+/* 目次 */
+.toc {
+  display: inline-block;
+  min-width: 260px;
+  max-width: 100%;
+  margin: 0 0 24px;
+  padding: 12px 20px 12px 16px;
+  background: var(--mist);
+  border: 1px solid var(--foam);
+  border-radius: var(--radius);
+  font-size: 13.5px;
+}
+.toc:empty { display: none; }
+.toc-title { font-weight: bold; color: var(--ink); margin-bottom: 6px; }
+.toc ol { margin: 0; padding-left: 1.6em; }
+.toc ol ol { margin-top: 2px; }
+.toc li { padding: 1px 0; }
+
+/* =========================================================
+   収録Wikiのカード
+   --accent はカードごとにインラインで入る（app/partials/wiki-card.php）
+   ========================================================= */
+.wiki-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 20px;
+}
+.wiki-card {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 22px 22px;
+  border: 1px solid var(--foam);
+  border-top: 4px solid var(--accent, var(--main));
+  border-radius: var(--radius);
+  background: var(--paper);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+.wiki-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(15, 20, 40, 0.14); }
+.wiki-card.is-preparing { background: #fbfcfe; box-shadow: none; }
+.wiki-card.is-preparing:hover { transform: none; box-shadow: none; }
+
+.wiki-card__head {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: start;
+  margin-bottom: 12px;
+}
+.wiki-card__icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  line-height: 1;
+  /* color-mix が使えないブラウザ向けに、先に無彩色の下地を置く */
+  background: var(--mist);
+  border: 1px solid var(--foam);
+  background: color-mix(in srgb, var(--accent) 16%, var(--white));
+  border-color: color-mix(in srgb, var(--accent) 40%, var(--white));
+}
+.wiki-card__title h3 {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  font-size: 16px;
+  line-height: 1.45;
+  color: var(--ink);
+}
+.wiki-card__en {
+  margin: 2px 0 0;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--text-sub);
+}
+.wiki-card__lead {
+  margin: 0 0 14px;
+  font-size: 13.5px;
+  color: var(--text);
+}
+.wiki-card__actions {
+  margin-top: auto;
+  padding-top: 4px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.badge {
+  align-self: start;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  white-space: nowrap;
+}
+.badge-open { background: #eaf6f1; color: var(--ok); border: 1px solid #b9e0d0; }
+.badge-preparing { background: var(--mist); color: var(--text-sub); border: 1px solid var(--foam); }
+
+.topic-list {
+  list-style: none;
+  margin: 0 0 16px;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.topic-list li {
+  padding: 2px 9px;
+  border-radius: 4px;
+  background: var(--mist);
+  border: 1px solid var(--foam);
+  font-size: 11.5px;
+  color: var(--text-sub);
+  line-height: 1.7;
+}
+.topic-more { background: none; border-style: dashed; }
+
+/* =========================================================
+   テーブル・注意書き・関連ページ
+   ========================================================= */
+.wiki-table {
+  width: 100%;
+  margin: 0 0 22px;
+  font-size: 13.5px;
+  border: 1px solid var(--foam);
+}
+.wiki-table th, .wiki-table td {
+  padding: 9px 12px;
+  border: 1px solid var(--foam);
+  text-align: left;
+  vertical-align: top;
+}
+.wiki-table thead th {
+  background: var(--ink);
+  color: var(--white);
+  font-weight: bold;
+  white-space: nowrap;
+}
+.wiki-table tbody th {
+  background: var(--mist);
+  color: var(--ink);
+  white-space: nowrap;
+  width: 26%;
+}
+.wiki-table tbody tr:nth-child(even) { background: #f9fafd; }
+.table-scroll { overflow-x: auto; margin-bottom: 22px; }
+.table-scroll .wiki-table { margin-bottom: 0; min-width: 520px; }
+
+.note, .warning, .tip {
+  margin: 0 0 18px;
+  padding: 12px 16px 12px 44px;
+  border-radius: var(--radius);
+  border: 1px solid;
+  position: relative;
+  font-size: 13.5px;
+}
+.note::before, .warning::before, .tip::before {
+  position: absolute;
+  left: 14px;
+  top: 10px;
+  font-size: 18px;
+}
+.note    { background: var(--mist); border-color: var(--foam); }
+.note::before { content: "💡"; }
+.tip     { background: #f2f9ee; border-color: #c3e2b6; }
+.tip::before { content: "✅"; }
+.warning { background: #fff5ec; border-color: #f2cfae; }
+.warning::before { content: "⚠️"; }
+
+.related {
+  margin-top: 38px;
+  padding: 16px 20px;
+  border-top: 2px solid var(--amber);
+  background: var(--mist);
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+.related h2 {
+  background: none;
+  border: none;
+  color: var(--ink);
+  padding: 0;
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+.related ul { margin: 0; columns: 2; font-size: 13.5px; }
+
+/* お問い合わせフォーム（Google フォームの埋め込み） */
+.form-embed { border: 1px solid var(--foam); border-radius: var(--radius); overflow: hidden; background: var(--white); }
+.form-embed iframe { display: block; width: 100%; min-height: 1620px; border: 0; }
+
+/* 404 */
+.notfound { text-align: center; padding: 40px 0 20px; }
+.notfound-code {
+  font-family: var(--font-title);
+  font-size: 76px;
+  line-height: 1;
+  color: var(--amber);
+  margin: 0 0 8px;
+}
+
+/* =========================================================
+   フッター
+   ========================================================= */
+.site-footer {
+  margin-top: 44px;
+  background: linear-gradient(180deg, var(--ink), var(--ink-deep));
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  font-size: 12.5px;
+  border-top: 2px solid var(--amber);
+}
+.footer-inner { max-width: 1080px; margin: 0 auto; padding: 28px 20px 26px; }
+.footer-links { margin: 0 0 12px; }
+.footer-links a { color: var(--white); margin: 0 10px; display: inline-block; }
+.footer-links a:hover { color: var(--amber); }
+.footer-copy { margin: 0; opacity: 0.75; line-height: 1.8; }
+
+/* トップへ戻る */
+.to-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: var(--main);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s, visibility 0.2s;
+  z-index: 50;
+}
+.to-top.show { opacity: 1; visibility: visible; }
+.to-top:hover { background: var(--light); text-decoration: none; color: var(--white); }
+
+/* 動きを抑える設定のユーザーにはアニメーションを止める */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .wiki-card:hover, .btn:hover { transform: none; }
+}
+
+/* =========================================================
+   レスポンシブ
+   ========================================================= */
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  .global-nav { display: none; }
+  .global-nav.open { display: block; }
+  .global-nav ul { flex-direction: column; padding: 0; }
+  .global-nav a { border-bottom: 1px solid rgba(255, 255, 255, 0.08); border-left: 3px solid transparent; }
+  .global-nav a:hover, .global-nav a.current { border-left-color: var(--amber); border-bottom-color: rgba(255, 255, 255, 0.08); }
+  .hero { padding: 42px 16px 50px; }
+  .hero h1 { font-size: 25px; }
+  .hero-stats { gap: 20px; }
+  .hero-stats strong { font-size: 24px; }
+  .layout { margin-top: 16px; padding: 0 12px; }
+  .content { padding: 18px 16px 26px; }
+  .wiki-grid { grid-template-columns: 1fr; gap: 16px; }
+  .related ul { columns: 1; }
+  .form-embed iframe { min-height: 1780px; }
+  .notfound-code { font-size: 56px; }
+}
