@@ -209,14 +209,6 @@ table { border-collapse: collapse; }
   color: var(--text);
 }
 .btn-ghost:hover { background: var(--mist); color: var(--text); }
-.btn-disabled {
-  border: 1px dashed var(--foam);
-  background: var(--mist);
-  color: var(--text-sub);
-  font-weight: normal;
-  cursor: default;
-}
-.btn-disabled:hover { transform: none; }
 
 /* =========================================================
    レイアウト（1カラム）
@@ -347,8 +339,6 @@ table { border-collapse: collapse; }
   transition: transform 0.15s, box-shadow 0.15s;
 }
 .wiki-card:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(15, 20, 40, 0.14); }
-.wiki-card.is-preparing { background: #fbfcfe; box-shadow: none; }
-.wiki-card.is-preparing:hover { transform: none; box-shadow: none; }
 
 .wiki-card__head {
   display: grid;
@@ -410,7 +400,6 @@ table { border-collapse: collapse; }
   white-space: nowrap;
 }
 .badge-open { background: #eaf6f1; color: var(--ok); border: 1px solid #b9e0d0; }
-.badge-preparing { background: var(--mist); color: var(--text-sub); border: 1px solid var(--foam); }
 
 .topic-list {
   list-style: none;
